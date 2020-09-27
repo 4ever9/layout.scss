@@ -1,0 +1,83 @@
+@import "./layout.scss";
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+.container {
+  @include container();
+}
+
+.row {
+  @include row();
+}
+
+.column {
+  @include column();
+}
+
+@include gen-grids();
+
+@include gen-grids-with-ratio(
+  $ratios: (
+    2: 5,
+  )
+);
+
+@include gen-grids-with-ratio(
+  $ratios: (
+    3: 5,
+  )
+);
+
+@include offset();
+
+// Media
+
+@include media-object();
+
+body {
+  background-color: #fff;
+  font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+}
+
+.box {
+  background: #00d1b2;
+  text-align: center;
+  border-radius: 4px;
+  padding: 20px;
+  color: #fff;
+  margin-bottom: 24px;
+}
+
+.is-gray {
+  background: #e0e0e0;
+}
+
+.panel {
+  margin-bottom: 20px;
+}
+
+.btn {
+  padding: 10px 20px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 1px solid transparent;
+  border-color: #00d1b2;
+  background-color: #00d1b2;
+  border-radius: 4px;
+  color: #fff;
+
+  &:hover {
+    background-color: darken(#00d1b2, 1);
+  }
+
+  &:focus,
+  &:active {
+    outline: none;
+  }
+}

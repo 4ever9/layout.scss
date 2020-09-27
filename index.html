@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Gulp starter</title>
+    <link rel="stylesheet" href="./dist/style.css" />
+    <meta
+      name="viewport"
+      content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Basic</h2>
+      <div class="row basic panel">
+        <div class="column">
+          <div class="box">1</div>
+        </div>
+        <div class="column">
+          <div class="box">2</div>
+        </div>
+        <div class="column">
+          <div class="box">3</div>
+        </div>
+        <div class="column">
+          <div class="box">4</div>
+        </div>
+      </div>
+      <button class="btn" id="btn-add">Add column</button>
+      <button class="btn" id="btn-rm">Remove column</button>
+      <h2>12 grid system</h2>
+      <div class="row">
+        <div class="column is-6">
+          <div class="box">colum is-6</div>
+        </div>
+        <div class="column is-6">
+          <div class="box">colum is-6</div>
+        </div>
+        <div class="column is-md-6 is-12">
+          <div class="box">colum is-md-6 is-12</div>
+        </div>
+        <div class="column is-md-6 is-12">
+          <div class="box">colum is-md-6 is-12</div>
+        </div>
+      </div>
+      <h2>Custom ratio</h2>
+      <div class="row">
+        <div class="column is-2-5">
+          <div class="box">column is-2-5</div>
+        </div>
+        <div class="column is-3-5">
+          <div class="box">column is-3-5</div>
+        </div>
+        <div class="column is-md-2-5">
+          <div class="box">column is-md-2-5</div>
+        </div>
+        <div class="column is-md-3-5">
+          <div class="box">column is-md-3-5</div>
+        </div>
+      </div>
+
+      <h2>Offset</h2>
+      <div class="row">
+        <div class="column is-md-4 is-offset-md-4">
+          <div class="box">column is-md-4 is-offset-md-4</div>
+        </div>
+        <div class="column is-md-4">
+          <div class="box">column is-md-4</div>
+        </div>
+      </div>
+
+      <h2>Media-object</h2>
+      <div class="media">
+        <div class="media-left">
+          <div class="box">Left</div>
+        </div>
+        <div class="media-content">
+          <div class="box is-gray" style="line-height: 100px">
+            Media content
+          </div>
+        </div>
+        <div class="media-right">
+          <div class="box">Right</div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="https://lib.baomitu.com/jquery/3.5.0/jquery.min.js"></script>
+  <script src="./dist/app.js"></script>
+</html>

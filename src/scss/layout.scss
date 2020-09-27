@@ -1,0 +1,153 @@
+@import "media";
+
+$breakpoints: (
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+);
+
+$container-max-widths: (
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+);
+
+$gap: 24px;
+
+// Grid system container
+@mixin container(
+  $breakpoints: $breakpoints,
+  $container-max-widths: $container-max-widths,
+  $gap: $gap
+) {
+  width: auto;
+  margin: 0 auto;
+  padding-left: $gap / 2;
+  padding-right: $gap / 2;
+
+  @each $breakpoint, $width in $breakpoints {
+    $max: map-get($container-max-widths, $breakpoint);
+    @include media-up($width) {
+      max-width: $max;
+    }
+  }
+}
+
+@mixin container-fluid($gap: $gap) {
+  width: auto;
+  margin: 0 auto;
+  padding-left: $gap / 2;
+  padding-right: $gap / 2;
+}
+
+@mixin row($gap: $gap) {
+  display: flex;
+  flex-wrap: wrap;
+  min-width: 100%;
+  margin-left: ($gap / -2);
+  margin-right: ($gap / -2);
+}
+
+@mixin column($gap: $gap) {
+  display: block;
+  flex-basis: 0;
+  flex-grow: 1;
+  flex-shrink: 1;
+  padding-left: ($gap / 2);
+  padding-right: ($gap / 2);
+}
+
+@mixin gen-grids(
+  $prefix: is,
+  $number: 12,
+  $breakpoints: $breakpoints,
+  $gap: $gap
+) {
+  @if $number > 0 {
+    @for $i from 1 through $number {
+      .#{$prefix}-#{$i} {
+        flex: 0 0 percentage($i / $number);
+        max-width: percentage($i / $number);
+      }
+    }
+
+    @each $breakpoint, $width in $breakpoints {
+      @include media-up($width) {
+        @for $i from 1 through $number {
+          .#{$prefix}-#{$breakpoint}-#{$i} {
+            flex: 0 0 percentage($i / $number);
+            max-width: percentage($i / $number);
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin gen-grids-with-ratio(
+  $prefix: is,
+  $breakpoints: $breakpoints,
+  $ratios: ()
+) {
+  @each $n, $d in $ratios {
+    .#{$prefix}-#{$n}-#{$d} {
+      flex: 0 0 percentage($n / $d);
+      max-width: percentage($n / $d);
+    }
+  }
+
+  @each $breakpoint, $width in $breakpoints {
+    @include media-up($width) {
+      @each $n, $d in $ratios {
+        .#{$prefix}-#{$breakpoint}-#{$n}-#{$d} {
+          flex: 0 0 percentage($n / $d);
+          max-width: percentage($n / $d);
+        }
+      }
+    }
+  }
+}
+
+@mixin offset($prefix: is-offset, $number: 12, $breakpoints: $breakpoints) {
+  @for $i from 1 through $number {
+    .#{$prefix}-#{$i} {
+      margin-left: percentage($i / $number);
+    }
+  }
+
+  @each $breakpoint, $width in $breakpoints {
+    @include media-up($width) {
+      @for $i from 1 through $number {
+        .#{$prefix}-#{$breakpoint}-#{$i} {
+          margin-left: percentage($i / $number);
+        }
+      }
+    }
+  }
+}
+
+@mixin media-object($name: media, $gap: $gap) {
+  .#{$name} {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .#{$name}-left {
+    margin-right: $gap;
+  }
+
+  .#{$name}-right {
+    margin-left: $gap;
+  }
+
+  .#{$name}-left,
+  .#{$name}-right {
+    flex-shrink: 0;
+    flex-grow: 0;
+  }
+
+  .#{$name}-content {
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+}
