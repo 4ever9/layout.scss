@@ -1,6 +1,6 @@
 {
-  "name": "@forever9/layout.scss",
-  "version": "0.1.0",
+  "name": "layout.scss",
+  "version": "0.1.1",
   "description": "Layout.scss is a set of scss mixins which will help you to manage project layout in an easy way.",
   "main": "index.js",
   "scripts": {
